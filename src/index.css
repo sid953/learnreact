@@ -1,0 +1,237 @@
+body {
+  height: 100vh;
+  margin: 0; /* To remove default body margin */
+  
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 1.5rem;
+  text-align: center;
+}
+/* Image.css */
+.image-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container img {
+  width: 100px;
+  height: 100px;
+}
+.circle{
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: -100;
+  top:0;
+  left:0;
+}
+
+/* Login Form */
+.login-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.page {
+  position: absolute;
+  top: 100px;
+  left: 0;
+  right: 0;
+  }
+
+  .fade-appear,
+  .fade-enter {
+  opacity: 0;
+  z-index: 1;
+  }
+  .fade-appear-active,
+  .fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 450ms linear 250ms;
+  }
+  .fade-exit {
+  opacity: 1;
+  }
+  .fade-exit.fade-exit-active {
+  opacity: 0;
+  transition: opacity 150ms linear;
+  }
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.logInBtn {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.alert {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: #fff;
+  border-radius: 5px;
+}
+
+/* CustomSidebar.css */
+.sidebar {
+  height: 600px;
+  position: sticky;
+  top: 0;
+  overflow-y: scroll;
+  padding: 1rem;
+  background-color: #333 !important; /* Sidebar background color */
+  color: #fff; /* Text color */
+}
+
+.sidebar .nav-link {
+  color: #fff; /* Link text color */
+}
+
+.sidebar .nav-link:hover {
+  background-color: #555; /* Hover background color */
+}
+
+.sidebar .position-sticky {
+  top: 1rem;
+}
+
+.m-25{
+  margin-left: 25px;
+}
+
+#myDiv{
+  padding-top: 20px;
+  height: 500px !important;
+  /* width:500px !important */
+}
+
+.nav-link.active {
+  background-color: #007bff; /* Change the background color for the active link */
+  color: #fff; /* Change the text color for the active link */
+  font-weight: bold; /* You can add other styles as needed */
+}
+
+.App-logo{
+  height: 21px;
+  width: 25px;
+}
+
+.divStyle{
+  padding: 25px;
+  background:radial-gradient(#16976b, transparent)
+}
+.subDivStyle{
+  background-color: transparent;
+  padding-top: 8px;
+}
+
+.table-bordered td, .table-bordered th {
+  border: 1px solid white;
+}
+
+.nav-item.dropdown .dropdown-menu {
+  max-height: 0;
+  opacity: 0;
+  display: block;
+  visibility: hidden;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: max-height 0.3s ease, opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+  max-height: 500px; /* Adjust this value to your preferred max height */
+  opacity: 1;
+  visibility: visible;
+  transform: scaleY(1);
+}
+.nav-link:hover {
+  background:linear-gradient(45deg, teal, transparent); /*will change background-color of element on hover */
+  color: white; /*will change color of text within the element on hover */
+  }
+p{
+  font-size: 18px;
+}
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: var(--red);
+  transform-origin: 0%;
+}
+
+.bgColor{
+  background:linear-gradient(45deg, teal, transparent); 
+  width: auto !important;
+}
+.aboutMe{
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251/var(--tw-bg-opacity));
+}
+
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
+}
+
+.custom-dropdown-item:hover {
+  background:darkcyan;
+  color: white; /* Change the text color on hover */
+}
+
+.about-me-nav{
+  margin-left: 8rem;
+}
+
