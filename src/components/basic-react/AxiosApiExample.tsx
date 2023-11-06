@@ -5,6 +5,7 @@ import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import StackBlitzOpen from "../StackBlitzOpen";
 import Transitions from "../Transition";
+import { Parallax } from "react-scroll-parallax";
 import { AnimationOnScroll } from "react-animation-on-scroll";
 
 export const AxiosApiExample: FC<{ selectedMenuItem: string }> = ({
@@ -34,13 +35,20 @@ export const AxiosApiExample: FC<{ selectedMenuItem: string }> = ({
             </p>
             <b className="m-25">Code Snippet</b>
             <div>
-              <SyntaxHighlighter
-                customStyle={customStyle}
-                language="typescript"
-                style={dark}
+              <Parallax
+                translateX={["0px", "0px"]}
+                scale={[1.05, 0.75]}
+                rotate={[0, 0]}
+                easing="easeIn"
               >
-                {axiosExample}
-              </SyntaxHighlighter>
+                <SyntaxHighlighter
+                  customStyle={customStyle}
+                  language="typescript"
+                  style={dark}
+                >
+                  {axiosExample}
+                </SyntaxHighlighter>
+              </Parallax>
               <b className="m-25">Explanation</b>
               <p className="m-25">
                 useEffect Hook: It runs when the component is mounted and calls
@@ -66,44 +74,16 @@ export const AxiosApiExample: FC<{ selectedMenuItem: string }> = ({
                 HTTP DELETE).
               </p>
               <div className="text-center">
-                <AnimationOnScroll animateIn="animate__bounceIn">
-                              <StackBlitzOpen
-                  template="create-react-app"
-                  title="uiw"
-                  description="uiw v4.7.2 - demo"
-                  tags={["stackblitz", "uiw", "react"]}
-                  dependencies={{
-                    "@types/react": "^18.2.27",
-                    "@types/react-dom": "^18.2.12",
-                    axios: "^0.19.0",
-                    bootstrap: "^4.6.2",
-                    jquery: "1.9.1 - 3",
-                    "popper.js": "^1.16.1",
-                    react: "^18.2.0",
-                    "react-bootstrap": "^2.9.0",
-                    "react-clock": "^4.5.0",
-                    "react-dom": "^18.2.0",
-                  }}
-                  files={{
-                    "index.html": `<div id="app"></div>`,
-                    "index.tsx": reactCode,
-                    "style.css": styles,
-                    "App.tsx": axiosExample,
-                  }}
+                <AnimationOnScroll
+                  duration={3}
+                  animateIn="animate__fadeInLeftBig"
+                  className="slow-slide-in"
                 >
-                  Open Example in StackBlitz
-                </StackBlitzOpen>
-
-                <Fragment>
-                  <StackBlitz
+                  <StackBlitzOpen
                     template="create-react-app"
                     title="uiw"
-                    description="uiw avatar v4.7.2 - demo"
+                    description="uiw v4.7.2 - demo"
                     tags={["stackblitz", "uiw", "react"]}
-                    embedOpts={{
-                      elementOrId: "myDiv",
-                      clickToLoad: false,
-                    }}
                     dependencies={{
                       "@types/react": "^18.2.27",
                       "@types/react-dom": "^18.2.12",
@@ -115,6 +95,7 @@ export const AxiosApiExample: FC<{ selectedMenuItem: string }> = ({
                       "react-bootstrap": "^2.9.0",
                       "react-clock": "^4.5.0",
                       "react-dom": "^18.2.0",
+                      "animate.css": "^4.1.1",
                     }}
                     files={{
                       "App.tsx": axiosExample,
@@ -123,11 +104,51 @@ export const AxiosApiExample: FC<{ selectedMenuItem: string }> = ({
                       "style.css": styles,
                     }}
                   >
-                    Embed StackBlitz
-                  </StackBlitz>
-                  <div id="myDiv"></div>
-                 </Fragment>
-            </AnimationOnScroll>
+                    Open This Example In New Tab- Fullscreen
+                  </StackBlitzOpen>
+                </AnimationOnScroll>
+
+                <Parallax
+                  translateX={["0px", "0px"]}
+                  scale={[0.75, 2]}
+                  rotate={[0, 0]}
+                  easing="easeInQuad"
+                >
+                  <Fragment>
+                    <StackBlitz
+                      template="create-react-app"
+                      title="uiw"
+                      description="uiw avatar v4.7.2 - demo"
+                      tags={["stackblitz", "uiw", "react"]}
+                      embedOpts={{
+                        elementOrId: "myDiv",
+                        clickToLoad: false,
+                      }}
+                      dependencies={{
+                        "@types/react": "^18.2.27",
+                        "@types/react-dom": "^18.2.12",
+                        axios: "^0.19.0",
+                        bootstrap: "^4.6.2",
+                        jquery: "1.9.1 - 3",
+                        "popper.js": "^1.16.1",
+                        react: "^18.2.0",
+                        "react-bootstrap": "^2.9.0",
+                        "react-clock": "^4.5.0",
+                        "react-dom": "^18.2.0",
+                        "animate.css": "^4.1.1",
+                      }}
+                      files={{
+                        "App.tsx": axiosExample,
+                        "index.html": `<div id="app"></div>`,
+                        "index.tsx": reactCode,
+                        "style.css": styles,
+                      }}
+                    >
+                      Embed StackBlitz
+                    </StackBlitz>
+                    <div id="myDiv"></div>
+                  </Fragment>
+                </Parallax>
               </div>
             </div>
           </div>

@@ -3,6 +3,7 @@ import { reactCode, styles, propExample } from "../../constants/codeExamples";
 import StackBlitz from "../StackBlitz";
 import { AnimationOnScroll } from "react-animation-on-scroll";
 import Transitions from "../Transition";
+import { Parallax } from "react-scroll-parallax";
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import StackBlitzOpen from "../StackBlitzOpen";
@@ -30,13 +31,20 @@ export const PropExample: FC<{ selectedMenuItem: string }> = ({
           </p>
           <b className="m-25">Code Snippet</b>
           <div>
-            <SyntaxHighlighter
-              customStyle={customStyle}
-              language="typescript"
-              style={dark}
+            <Parallax
+              translateX={["0px", "0px"]}
+              scale={[1.05, 0.75]}
+              rotate={[0, 0]}
+              easing="easeIn"
             >
-              {propExample}
-            </SyntaxHighlighter>
+              <SyntaxHighlighter
+                customStyle={customStyle}
+                language="typescript"
+                style={dark}
+              >
+                {propExample}
+              </SyntaxHighlighter>
+            </Parallax>
             <b className="m-25">Explanation</b>
             <p className="m-25">
               ChildComponent: This is a functional component that takes multiple
@@ -51,7 +59,11 @@ export const PropExample: FC<{ selectedMenuItem: string }> = ({
               props.
             </p>
             <div className="text-center">
-              <AnimationOnScroll animateIn="animate__bounceIn">
+              <AnimationOnScroll
+                duration={3}
+                animateIn="animate__fadeInLeftBig"
+                className="slow-slide-in"
+              >
                 <StackBlitzOpen
                   template="create-react-app"
                   title="uiw"
@@ -68,16 +80,24 @@ export const PropExample: FC<{ selectedMenuItem: string }> = ({
                     "react-bootstrap": "^2.9.0",
                     "react-clock": "^4.5.0",
                     "react-dom": "^18.2.0",
+                    "animate.css": "^4.1.1",
                   }}
                   files={{
+                    "App.tsx": propExample,
                     "index.html": `<div id="app"></div>`,
                     "index.tsx": reactCode,
                     "style.css": styles,
-                    "App.tsx": propExample,
                   }}
                 >
-                  Open Example in StackBlitz
+                  Open This Example In New Tab- Fullscreen
                 </StackBlitzOpen>
+              </AnimationOnScroll>
+              <Parallax
+                translateX={["0px", "0px"]}
+                scale={[0.75, 2]}
+                rotate={[0, 0]}
+                easing="easeInQuad"
+              >
                 <Fragment>
                   <StackBlitz
                     template="create-react-app"
@@ -99,6 +119,7 @@ export const PropExample: FC<{ selectedMenuItem: string }> = ({
                       "react-bootstrap": "^2.9.0",
                       "react-clock": "^4.5.0",
                       "react-dom": "^18.2.0",
+                      "animate.css": "^4.1.1",
                     }}
                     files={{
                       "App.tsx": propExample,
@@ -111,7 +132,7 @@ export const PropExample: FC<{ selectedMenuItem: string }> = ({
                   </StackBlitz>
                   <div id="myDiv"></div>
                 </Fragment>
-              </AnimationOnScroll>
+              </Parallax>
             </div>
           </div>
         </div>

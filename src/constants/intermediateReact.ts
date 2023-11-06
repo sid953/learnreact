@@ -629,3 +629,244 @@ export const App: React.FC = () => {
 };
 
 `
+
+export const ssrIndex = `
+// server/index.js
+const express = require('express');
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+app.listen(PORT, () => {
+  console.log("Server is listening on port \${PORT}");
+});`
+
+export const ssrAppServer = `
+// src/AppServer.js
+import React from 'react';
+
+const AppServer = () => {
+  return (
+    <div>
+      <h1>Hello from Server-Side Rendered React App!</h1>
+    </div>
+  );
+};
+
+export default AppServer;`
+
+export const webpackServerConfig = `
+// webpack.server.js
+const path = require('path');
+const nodeExternals = require('webpack-node-externals');
+
+module.exports = {
+  target: 'node',
+  mode: 'development',
+  externals: [nodeExternals()],
+  entry: './server/index.js',
+  output: {
+    filename: 'server.js',
+    path: path.resolve(__dirname, 'build'),
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              '@babel/preset-env',
+              '@babel/preset-react',
+            ],
+          },
+        },
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
+};
+`;
+
+export const packageSSR = `
+"scripts": {
+  ...
+  "build:server": "webpack --config webpack.server.js"
+}
+`;
+
+export const ssrIndexUpdate = `
+// server/index.js
+const express = require('express');
+const React = require('react');
+const ReactDOMServer = require('react-dom/server');
+const AppServer = require('../src/AppServer').default;
+
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+app.get('/', (req, res) => {
+  const content = ReactDOMServer.renderToString(<AppServer />);
+  const html = \`
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>React SSR</title>
+      </head>
+      <body>
+        <div id="root">\${content}</div>
+      </body>
+    </html>
+  \`;
+
+  res.send(html);
+});
+
+app.listen(PORT, () => {
+  console.log(\`Server is listening on port \${PORT}\`);
+});
+`
+
+export const packageNewSSR = `
+"scripts": {
+  ...
+  "start:server": "node build/server.js"
+}
+`;
+
+export const reactAnimation = `
+import React, { useState } from 'react';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import Header from './Header';
+import About from './About';
+import Portfolio from './Portfolio';
+import Contact from './Contact';
+import ParticlesBg from 'particles-bg';
+import './style.css'
+
+export const App = () => {
+  const [showContact, setShowContact] = useState(false);
+  const config = {
+    num: [4, 7],
+    rps: 0.4,
+    radius: [5, 40],
+    life: [1.5, 3],
+    v: [2, 3],
+    tha: [-40, 40],
+    alpha: [0.6, 0],
+    scale: [0.1, 0.7],
+    position: 'all',
+    color: ['random', '#ff0000'],
+    cross: 'dead',
+    random: 15,
+  };
+
+  return (
+    <div className="animation">
+      <ParticlesBg type="custom" config={config} bg={true} />
+      <Header />
+      <About />
+      <Portfolio />
+      <AnimationOnScroll animateOnce={true} animateIn="animate__rubberBand">
+      <h2>Look what i am doing</h2>
+   </AnimationOnScroll>
+    </div>
+  );
+};
+
+
+`
+export const animateHeader = `
+
+import React from 'react';
+import { Parallax, ParallaxProvider } from 'react-scroll-parallax';
+
+const Header = () => {
+  return (
+    <section id="header">
+      <ParallaxProvider>
+      <Parallax className="header-parallax" y={[-20, 20]}>
+        <h1 className="header-title">Welcome to My Website</h1>
+      </Parallax>
+      </ParallaxProvider>
+    </section>
+  );
+};
+
+export default Header;
+
+
+
+`
+export const animateAbout = `
+import React from 'react';
+import { motion } from 'framer-motion';
+
+const About = () => {
+  return (
+    <section id="about">
+      <div className="about-content">
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+          className="about-text"
+        >
+          <h2>About Me</h2>
+          <p>Learn more about me here.</p>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default About;
+
+`
+export const animatePortfolio = `
+import React from 'react';
+
+const Portfolio = () => {
+  return (
+    <section id="portfolio">
+      <div className="portfolio-content">
+        <h2>My Portfolio</h2>
+        <p>View my work here.</p>
+      </div>
+    </section>
+  );
+};
+
+export default Portfolio;
+
+`
+export const animateContact = `
+import React from 'react';
+import { CSSTransition } from 'react-transition-group';
+
+const Contact = ({ showContact }) => {
+  return (
+    <section id="contact">
+      <CSSTransition
+        in={showContact}
+        timeout={1000}
+        classNames="contact"
+        unmountOnExit
+      >
+        <div className="contact-content">
+          <h2>Contact Me</h2>
+          <p>Get in touch with me here.</p>
+        </div>
+      </CSSTransition>
+    </section>
+  );
+};
+
+export default Contact;
+
+`

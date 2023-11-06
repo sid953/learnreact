@@ -1,7 +1,9 @@
 import { SVGProps } from "react";
 import { JSX } from "react/jsx-runtime";
 
-export const PowerBtn = (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => {
+export const PowerBtn = (
+  props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       aria-hidden="true"
@@ -20,7 +22,9 @@ export const PowerBtn = (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement
   );
 };
 
-export const Github = (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => {
+export const Github = (
+  props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       aria-hidden="true"
@@ -39,7 +43,9 @@ export const Github = (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>)
   );
 };
 
-export const Twitter = (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => {
+export const Twitter = (
+  props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       aria-hidden="true"
@@ -58,7 +64,9 @@ export const Twitter = (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>
   );
 };
 
-export const Facebook = (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => {
+export const Facebook = (
+  props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       aria-hidden="true"
@@ -77,7 +85,9 @@ export const Facebook = (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement
   );
 };
 
-export const YouTube = (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => {
+export const YouTube = (
+  props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       aria-hidden="true"
@@ -96,7 +106,9 @@ export const YouTube = (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>
   );
 };
 
-export const YinYang = (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => {
+export const YinYang = (
+  props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       aria-hidden="true"
@@ -136,7 +148,9 @@ export const Anchor = (
   );
 };
 
-export const Link = (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => {
+export const Link = (
+  props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       aria-hidden="true"
@@ -155,7 +169,9 @@ export const Link = (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) =
   );
 };
 
-export const Design = (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => {
+export const Design = (
+  props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       aria-hidden="true"
@@ -174,7 +190,9 @@ export const Design = (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>)
   );
 };
 
-export const Develope = (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => {
+export const Develope = (
+  props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>
+) => {
   return (
     <svg
       aria-hidden="true"

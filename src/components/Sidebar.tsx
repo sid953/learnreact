@@ -1,7 +1,7 @@
 // Sidebar.tsx
-import React from 'react';
-import Nav from 'react-bootstrap/Nav';
-import { Link, useLocation } from 'react-router-dom';
+import React from "react";
+import Nav from "react-bootstrap/Nav";
+import { Link, useLocation } from "react-router-dom";
 
 interface SidebarProps {
   menuItems: MenuItem[];
@@ -19,7 +19,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ menuItems }) => {
       <div className="position-sticky">
         {menuItems.map((item, index) => (
           <Nav.Item key={index}>
-            <Link to={item.path} className={`nav-link ${location.pathname === item.path ? 'active' : ''}`}>
+            <Link
+              to={item.path}
+              className={`nav-link ${
+                location.pathname === item.path ? "active" : ""
+              }`}
+            >
               {item.text}
             </Link>
           </Nav.Item>

@@ -1,9 +1,9 @@
-// @ts-nocheck 
+// @ts-nocheck
 import React from "react";
 import sdk from "@stackblitz/sdk";
 import { Project, EmbedOptions, OpenOptions } from "@stackblitz/sdk";
 import { Button } from "react-bootstrap";
-import logo from '../assets/stackblitzIcon.svg';
+import logo from "../assets/stackblitzIcon.svg";
 
 export type EmbedOpts = {
   /** Either an element ID string or the target HTMLElement itself. */

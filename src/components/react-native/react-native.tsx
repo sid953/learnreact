@@ -1,28 +1,29 @@
-import { FC, Fragment, useEffect, useState } from "react";
-import { reactCode, styles } from "../../constants/codeExamples";
-import { hooks } from "../../constants/hooks";
-import StackBlitz from "../StackBlitz";
-import { AnimationOnScroll } from "react-animation-on-scroll";
+import { FC, useEffect, useState } from "react";
+// import { reactCode, styles } from "../../constants/codeExamples";
+import { reactNative } from "../../constants/reactNative";
+// import StackBlitz from "../StackBlitz";
+// import { AnimationOnScroll } from "react-animation-on-scroll";
 import Transitions from "../Transition";
 import { Parallax } from "react-scroll-parallax";
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dark } from "react-syntax-highlighter/dist/esm/styles/prism";
-import StackBlitzOpen from "../StackBlitzOpen";
+// import StackBlitzOpen from "../StackBlitzOpen";
 import { useLocation } from "react-router-dom";
+import qr from "../../assets/guessnumber.png";
 // import { SwitchTransition,CSSTransition } from "react-transition-group";
 
-export const Hooks: FC<{ selectedMenuItem: string }> = ({
+export const ReactNative: FC<{ selectedMenuItem: string }> = ({
   selectedMenuItem,
 }) => {
   const [currentHook, setCurrentHook] = useState(null);
-  const [stackBlitzKey, setStackBlitzKey] = useState(Date.now()); // Initialize with a unique key
+  //   const [stackBlitzKey, setStackBlitzKey] = useState(Date.now()); // Initialize with a unique key
   const location = useLocation();
 
   useEffect(() => {
     // Access the pathname from the location object and remove the leading '/'
     const pathWithoutLeadingSlash = location.pathname.substring(1);
-    setCurrentHook(hooks[pathWithoutLeadingSlash]);
-    setStackBlitzKey(Date.now());
+    setCurrentHook(reactNative[pathWithoutLeadingSlash]);
+    // setStackBlitzKey(Date.now());
   }, [location.pathname]);
 
   const customStyle: React.CSSProperties = {
@@ -61,8 +62,13 @@ export const Hooks: FC<{ selectedMenuItem: string }> = ({
                 </Parallax>
                 <b className="m-25">Explanation</b>
                 <p className="m-25">{currentHook.explanation}</p>
+
                 <div className="text-center">
-                  <AnimationOnScroll
+                  <b>Scan the QR code to install the app</b>
+                  <div>
+                    <img src={qr} alt="Child Image" />
+                  </div>
+                  {/* <AnimationOnScroll
                     duration={3}
                     animateIn="animate__fadeInLeftBig"
                     className="slow-slide-in"
@@ -125,6 +131,7 @@ export const Hooks: FC<{ selectedMenuItem: string }> = ({
                           "react-clock": "^4.5.0",
                           "react-dom": "^18.2.0",
                           "animate.css": "^4.1.1",
+                          "react-native-web": "0.19.9"
                         }}
                         files={{
                           "App.tsx": currentHook.code,
@@ -137,7 +144,7 @@ export const Hooks: FC<{ selectedMenuItem: string }> = ({
                       </StackBlitz>
                       <div id="myDiv"></div>
                     </Fragment>
-                  </Parallax>
+                  </Parallax> */}
                 </div>
               </div>
             </div>

@@ -1,5 +1,5 @@
-// @ts-nocheck 
-import React from "react";
+// @ts-nocheck
+import React, { useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import ParticlesComponent from "./ParticlesComponent";
 import SocialIcons from "./SocialIcons";
@@ -7,14 +7,8 @@ import { lightTheme } from "../../constants/Themes";
 import { Design, Develope } from "./AllSvg";
 import BigTitle from "./BigTitle";
 import PowerButton from "./PowerButton";
-// import {lightTheme} from './Themes';
-// import { Design, Develope} from './AllSvgs';
-
-// import LogoComponent from '../subComponents/LogoComponent';
-// import SocialIcons from '../subComponents/SocialIcons';
-// import PowerButton from '../subComponents/PowerButton';
-// import ParticleComponent from '../subComponents/ParticleComponent';
-// import BigTitle from '../subComponents/BigTitlte'
+import Avatar from "react-avatar";
+import Transitions from "../Transition";
 
 const Box = styled.div`
   background-color: ${(props) => props.theme.body};
@@ -28,12 +22,14 @@ const Box = styled.div`
 
 const Main = styled.div`
   border: 2px solid ${(props) => props.theme.text};
+  transform: translateX(-100%);
+  animation: slideInLeft 3s ease-in-out forwards;
   color: ${(props) => props.theme.text};
   background-color: ${(props) => props.theme.body};
   padding: 2rem;
   width: 89vw;
   height: max-content;
-  z-index: 3;
+  z-index: 1;
   line-height: 1.5;
   cursor: pointer;
 
@@ -84,46 +80,72 @@ const Description = styled.div`
   }
 `;
 
-export const MySkills = () => {
+const Container = styled.div`
+  padding: 2rem;
+`;
+
+export const MySkills = ({ onExpActivity }) => {
+  const [hoverTimeout, setHoverTimeout] = useState(null);
+  const handleMouseActivity = () => {
+    // Clear any existing timeouts
+    if (hoverTimeout) {
+      clearTimeout(hoverTimeout);
+    }
+
+    // Set a new timeout to show the Main Container after a delay (e.g., 500ms)
+    const newTimeout = setTimeout(() => {
+      onExpActivity();
+    }, 500);
+
+    // Save the timeout ID in state
+    setHoverTimeout(newTimeout);
+  };
   return (
-    <ThemeProvider theme={lightTheme}>
-      <Box>
-        {/* <LogoComponent theme='light'/> */}
-        <SocialIcons theme="light" />
-        <PowerButton />
-        <ParticlesComponent theme="light" />
+    <Transitions>
+      <ThemeProvider theme={lightTheme}>
+        <Box onMouseMove={handleMouseActivity} className="bgColor">
+          {/* <Container> */}
+          <Avatar
+            googleId="118096717852922241760"
+            size="100"
+            round={true}
+            className="avatarExp"
+            src="https://pbs.twimg.com/profile_images/1401509315169587203/czQRUmh1.jpg"
+          />
+          {/* <LogoComponent theme='light'/> */}
+          <SocialIcons theme="light" />
+          {/* <PowerButton /> */}
 
-        <Main>
-          <Title>
-            <Develope width={40} height={40} /> Creating My React Tutorial Website: A Journey of Learning and Sharing
-          </Title>
-          <Description>
-          I embarked on a journey to create this React tutorial website.
-          In the beginning, my familiarity with React was limited. 
-          However, I was eager to learn, so I started by building a strong foundation.
-          The website is not only informative but also visually appealing.
-          Integrating Bootstrap and styling was a creative process.
-          The heart of the website lay in its tutorial sections.
-          I curated and wrote content for basic, intermediate, and advanced React concepts.
-          What made these tutorials unique was the integration of interactive code examples using StackBlitz.
-          Users could experiment and learn hands-on, which was a gratifying addition to the project.
-          The culmination of this journey was the deployment of the website.
-          </Description>
-          {/* <Description>
-            <strong>Skills</strong>
-            <p>
-              Html, Css, Js, React, Redux, Sass, Bootstrap, Tailwind
-              etc.
-            </p>
-          </Description>
-          <Description>
-            <strong>Tools</strong>
-            <p>VScode, Github, Codepen etc.</p>
-          </Description> */}
-        </Main>
+          <ParticlesComponent theme="light" />
 
-        {/* <BigTitle text="SKILLS" top="80%" right="30%" /> */}
-      </Box>
-    </ThemeProvider>
+          <Main>
+            <Title>
+              <Develope width={40} height={40} /> Creating My React Tutorial
+              Website: A Journey of Learning and Sharing
+            </Title>
+            <Description>
+              This incredible journey of learning React and building a website
+              from the ground up didn't just equip me with technical skills; it
+              transformed me as a person. My confidence soared to new heights. I
+              now approach challenges with a fearless determination,I've learned
+              that in the world of web development, there's no limit to what we
+              can create. But what truly brings me happiness is the opportunity
+              to share this knowledge with others. I want to inspire and
+              encourage those who might be starting their own voyage into the
+              world of React or web development. I believe that by sharing my
+              experiences and knowledge, I can help them overcome hurdles, stay
+              motivated, and experience the same sense of accomplishment and
+              confidence that I now possess. It's not just about sharing
+              knowledge but also about connecting with people who share the same
+              passion for React. This journey has been truly rewarding, and I'm
+              excited to see how this platform will help and resonate with
+              others in our community. I would love to see your email on
+              sawantsiddhesh0325@gmail.com on any feedback/suggestion or your
+              comments on my website.
+            </Description>
+          </Main>
+        </Box>
+      </ThemeProvider>
+    </Transitions>
   );
 };

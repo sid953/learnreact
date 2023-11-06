@@ -4,6 +4,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-clock/dist/Clock.css';
+import "animate.css/animate.min.css";
 import { App } from './App';
 
 const root = createRoot(document.getElementById('app'));
@@ -108,6 +109,12 @@ h1 {
   .table-bordered td, .table-bordered th {
     border: 1px solid white;
     color:white
+  }
+
+  .animation{
+    background: linear-gradient(45deg, #ffc107, transparent);
+    height: 100vh;
+
   }
   `
 export const axiosExample: string = `import React, { useState, useEffect } from 'react';

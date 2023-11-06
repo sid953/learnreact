@@ -3,13 +3,19 @@ import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import StackBlitzOpen from "../StackBlitzOpen";
 import { reactCode, styles } from "../../constants/codeExamples";
-import { bootstrapExample } from "../../constants/intermediateReact";
+import {
+  animateAbout,
+  animateContact,
+  animateHeader,
+  animatePortfolio,
+  reactAnimation,
+} from "../../constants/intermediateReact";
 import StackBlitz from "../StackBlitz";
 import { AnimationOnScroll } from "react-animation-on-scroll";
 import Transitions from "../Transition";
 import { Parallax } from "react-scroll-parallax";
 
-export const BootstrapExample: FC<{ selectedMenuItem: string }> = ({
+export const ReactAnimation: FC<{ selectedMenuItem: string }> = ({
   selectedMenuItem,
 }) => {
   const customStyle: React.CSSProperties = {
@@ -27,10 +33,32 @@ export const BootstrapExample: FC<{ selectedMenuItem: string }> = ({
           <h4 className="m-25">{selectedMenuItem}</h4>
           <b className="m-25">Description</b>
           <p className="m-25">
-            Here's an example of a React application using TypeScript that
-            includes a navigation bar, a carousel component to display images,
-            image cards, and a footer. We'll be using React Bootstrap components
-            for this.
+            Here's an overview of the steps to create an animated website using
+            the libraries: react-scroll-parallax, framer-motion,
+            react-transition-group, and particles-bg.<br></br>
+            <b>
+              npm install react-scroll-parallax framer-motion
+              react-transition-group particles-bg
+            </b>
+            <br></br>
+            <b>Implement react-scroll-parallax:</b> <br></br>
+            Use ParallaxProvider to wrap your components and enable
+            scrolling-based animations. Inside your components, use Parallax
+            components to control the animation of individual elements.{" "}
+            <br></br>
+            <b>Implement framer-motion:</b> <br></br>
+            Use motion components to add animations, transitions, and
+            interactivity to your elements. You can create complex animations
+            for page transitions, hover effects, and more using the motion
+            library. <br></br>
+            <b>Implement react-transition-group:</b> <br></br>
+            Use the TransitionGroup and CSSTransition components to create
+            animated transitions between different sections or components.{" "}
+            <br></br>
+            <b>Create an Animated Background with particles-bg:</b> <br></br>
+            Utilize the particles-bg library to add a dynamic and interactive
+            particle background to your website. Configure the particles'
+            appearance and behavior according to your design. <br></br>
           </p>
           <b className="m-25">Code Snippet</b>
           <div>
@@ -45,28 +73,20 @@ export const BootstrapExample: FC<{ selectedMenuItem: string }> = ({
                 language="typescript"
                 style={dark}
               >
-                {bootstrapExample}
+                {reactAnimation}
               </SyntaxHighlighter>
             </Parallax>
             <b className="m-25">Explanation</b>
             <p className="m-25">
-              <b>
-                1. Install Required Dependencies: npm install react-bootstrap
-                bootstrap
-              </b>
-              <br></br>
-              <b>2. Create the Navigation Bar: </b>
-              Import navbar for the navigation bar<br></br>
-              <b>3. Create the Carousel Component: </b>
-              Import Carousel for displaying carousel images<br></br>
-              <b>4. Create Image Cards: </b>
-              Import Card for displaying image cards<br></br>
-              Place your carousel images and card images in your project
-              directory and update the src attributes accordingly. Please note
-              that this is a basic example, and you can customize and expand it
-              according to your project's requirements.
+              With this structure, you have a basic animated one-page website.
+              You can add more sections, complex animations, styles, and
+              transitions to create a more engaging website. Be sure to update
+              the styles in the CSS file to customize the appearance of your
+              site. Remember that creating a complete website with multiple
+              pages and intricate animations can be a significant project. This
+              example serves as a starting point for you to expand and customize
+              as needed.
             </p>
-
             <div className="text-center">
               <AnimationOnScroll
                 duration={3}
@@ -90,9 +110,13 @@ export const BootstrapExample: FC<{ selectedMenuItem: string }> = ({
                     "react-clock": "^4.5.0",
                     "react-dom": "^18.2.0",
                     "animate.css": "^4.1.1",
+                    "particles-bg": "^2.5.5",
+                    "react-transition-group": "^4.4.5",
+                    "react-scroll-parallax": "^3.4.2",
+                    "react-animation-on-scroll": "^5.1.0",
                   }}
                   files={{
-                    "App.tsx": bootstrapExample,
+                    "App.tsx": reactAnimation,
                     "index.html": `<div id="app"></div>`,
                     "index.tsx": reactCode,
                     "style.css": styles,
@@ -120,6 +144,7 @@ export const BootstrapExample: FC<{ selectedMenuItem: string }> = ({
                     }}
                     dependencies={{
                       "@types/react": "^18.2.27",
+                      "@types/react-transition-group": "^4.4.7",
                       "@types/react-dom": "^18.2.12",
                       "@types/jest": "^29.5.6",
                       "@types/mocha": "^10.0.3",
@@ -136,9 +161,18 @@ export const BootstrapExample: FC<{ selectedMenuItem: string }> = ({
                       "react-dom": "^18.2.0",
                       "animate.css": "^4.1.1",
                       "react-error-boundary": "^4.0.11",
+                      "framer-motion": "^10.16.4",
+                      "react-scroll-parallax": "^3.4.2",
+                      "particles-bg": "^2.5.5",
+                      "react-transition-group": "^4.4.5",
+                      "react-animation-on-scroll": "^5.1.0",
                     }}
                     files={{
-                      "App.tsx": bootstrapExample,
+                      "App.tsx": reactAnimation,
+                      "Header.tsx": animateHeader,
+                      "About.tsx": animateAbout,
+                      "Portfolio.tsx": animatePortfolio,
+                      "Contact.tsx": animateContact,
                       "index.html": `<div id="app"></div>`,
                       "index.tsx": reactCode,
                       "style.css": styles,

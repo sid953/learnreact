@@ -1,7 +1,7 @@
 body {
   height: 100vh;
   margin: 0; /* To remove default body margin */
-  
+  user-select: none;
 }
 
 h1 {
@@ -232,6 +232,26 @@ p{
 }
 
 .about-me-nav{
-  margin-left: 8rem;
+  margin-left: 4rem;
+}
+.codeHighlight{
+  margin:0 !important
+}
+.slow-slide-in {
+  animation-duration: 10s; /* Adjust the duration as needed (e.g., 2s for a slower animation) */
 }
 
+ .hover-button:hover + .AboutPage {
+  display: block; 
+}
+
+.avatar{
+z-index: 999;
+position: relative;
+}
+.avatarExp{
+  margin-top: -15rem;
+}
+.nav-item.dropdown:hover .dropdown-menu {
+  max-height: 700px !important;
+}

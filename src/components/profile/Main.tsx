@@ -1,18 +1,21 @@
-// @ts-nocheck 
+// @ts-nocheck
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
-import Avatar from 'react-avatar';
+import Avatar from "react-avatar";
 // import LogoComponent from '../subComponents/LogoComponent'
 // import PowerButton from '../subComponents/PowerButton'
 // import SocialIcons from '../subComponents/SocialIcons'
-import { YinYang } from './AllSvg'
+import { YinYang } from "./AllSvg";
 import Intro from "./Intro";
 import SocialIcons from "./SocialIcons";
 import Me from "../../assets/me.jpeg";
 import PowerButton from "./PowerButton";
 import Transitions from "../Transition";
+import { AboutPage } from "./AboutMe";
+import { MySkills } from "./MySkills";
+import { Button } from "react-bootstrap";
 
 const MainContainer = styled.div`
   // background: ${(props) => props.theme.body};
@@ -134,51 +137,55 @@ const DarkDiv = styled.div`
 `;
 
 const Main = () => {
+  const [isHovered, setIsHovered] = useState(false);
   const [click, setClick] = useState(false);
+  const [showExperience, setShowExperience] = useState(false);
 
   const handleClick = () => setClick(!click);
 
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setShowExperience(false);
+  };
+
   return (
     <Transitions>
-    <MainContainer>
-      <DarkDiv click={click} />
-      <Container>
-        <PowerButton />
-        <Avatar googleId="118096717852922241760" size="100" round={true}  src="https://pbs.twimg.com/profile_images/1401509315169587203/czQRUmh1.jpg" />
-        <SocialIcons theme={click ? "dark" : "light"} />
+      {/* <ThemeProvider theme={lightTheme}> */}
 
-        <Center click={click}>
-          <YinYang
-            onClick={() => handleClick()}
-            width={click ? 120 : 200}
-            height={click ? 120 : 200}
-            fill="currentColor"
+      <MainContainer className="bgColor">
+        {!isHovered && !showExperience && <DarkDiv click={click} />}
+
+        {isHovered && <AboutPage onActivity={handleMouseLeave} />}
+        {showExperience && <MySkills onExpActivity={handleMouseLeave} />}
+        <Container>
+          {/* <PowerButton /> */}
+          <Avatar
+            className="avatar"
+            googleId="118096717852922241760"
+            size="100"
+            round={true}
+            src="https://pbs.twimg.com/profile_images/1401509315169587203/czQRUmh1.jpg"
           />
-          <span>click here</span>
-        </Center>
+          <SocialIcons theme={click ? "dark" : "light"} />
 
-        <Contact target="_blank" href="mailto:sawantsiddhesh0325@gmail.com">
-          <motion.h2
-            initial={{
-              y: -200,
-              transition: { type: "spring", duration: 1.5, delay: 1 },
-            }}
-            animate={{
-              y: 0,
-              transition: { type: "spring", duration: 1.5, delay: 1 },
-            }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            Say hi..
-          </motion.h2>
-        </Contact>
+          <Center click={click}>
+            <YinYang
+              onClick={() => handleClick()}
+              width={click ? 120 : 200}
+              height={click ? 120 : 200}
+              fill="currentColor"
+            />
+            <span>click here</span>
+          </Center>
 
-        <BottomBar>
-          <ABOUT to="/profile" click={+click}>
+          <Contact target="_blank" href="mailto:sawantsiddhesh0325@gmail.com">
             <motion.h2
               initial={{
-                y: 200,
+                y: -200,
                 transition: { type: "spring", duration: 1.5, delay: 1 },
               }}
               animate={{
@@ -188,29 +195,60 @@ const Main = () => {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              About.
+              Say hi..
             </motion.h2>
-          </ABOUT>
-          <SKILLS to="/skills">
-            <motion.h2
-              initial={{
-                y: 200,
-                transition: { type: "spring", duration: 1.5, delay: 1 },
+          </Contact>
+
+          <BottomBar>
+            <ABOUT
+              onMouseEnter={() => {
+                setIsHovered(true);
               }}
-              animate={{
-                y: 0,
-                transition: { type: "spring", duration: 1.5, delay: 1 },
-              }}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
+              onMouseLeave={() => setIsHovered(false)}
+              // to="/profile"
+              click={+click}
             >
-              My Experience.
-            </motion.h2>
-          </SKILLS>
-        </BottomBar>
-      </Container>
-      {click ? <Intro click={click} /> : null}
-    </MainContainer>
+              <motion.h2
+                initial={{
+                  y: 200,
+                  transition: { type: "spring", duration: 1.5, delay: 1 },
+                }}
+                animate={{
+                  y: 0,
+                  transition: { type: "spring", duration: 1.5, delay: 1 },
+                }}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <Button variant="warning">About.</Button>
+              </motion.h2>
+            </ABOUT>
+            <SKILLS
+              onMouseEnter={() => {
+                setShowExperience(true);
+              }}
+              onMouseLeave={() => setShowExperience(false)}
+            >
+              <motion.h2
+                initial={{
+                  y: 200,
+                  transition: { type: "spring", duration: 1.5, delay: 1 },
+                }}
+                animate={{
+                  y: 0,
+                  transition: { type: "spring", duration: 1.5, delay: 1 },
+                }}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <Button variant="warning">My Experience.</Button>
+              </motion.h2>
+            </SKILLS>
+          </BottomBar>
+        </Container>
+        {click && !isHovered && !showExperience && <Intro click={click} />}
+      </MainContainer>
+      {/* </ThemeProvider> */}
     </Transitions>
   );
 };

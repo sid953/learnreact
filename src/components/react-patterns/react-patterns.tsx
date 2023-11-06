@@ -1,6 +1,6 @@
 import { FC, Fragment, useEffect, useState } from "react";
 import { reactCode, styles } from "../../constants/codeExamples";
-import { hooks } from "../../constants/hooks";
+import { reactPatterns } from "../../constants/reactPatterns";
 import StackBlitz from "../StackBlitz";
 import { AnimationOnScroll } from "react-animation-on-scroll";
 import Transitions from "../Transition";
@@ -11,7 +11,7 @@ import StackBlitzOpen from "../StackBlitzOpen";
 import { useLocation } from "react-router-dom";
 // import { SwitchTransition,CSSTransition } from "react-transition-group";
 
-export const Hooks: FC<{ selectedMenuItem: string }> = ({
+export const ReactPatterns: FC<{ selectedMenuItem: string }> = ({
   selectedMenuItem,
 }) => {
   const [currentHook, setCurrentHook] = useState(null);
@@ -21,7 +21,7 @@ export const Hooks: FC<{ selectedMenuItem: string }> = ({
   useEffect(() => {
     // Access the pathname from the location object and remove the leading '/'
     const pathWithoutLeadingSlash = location.pathname.substring(1);
-    setCurrentHook(hooks[pathWithoutLeadingSlash]);
+    setCurrentHook(reactPatterns[pathWithoutLeadingSlash]);
     setStackBlitzKey(Date.now());
   }, [location.pathname]);
 
